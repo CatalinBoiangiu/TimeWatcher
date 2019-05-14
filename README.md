@@ -2,6 +2,10 @@
 
 A 28 hr. day companion.
 
+| 28 hr. mode                                | 24 hr. mode                                |
+| ------------------------------------------ | ------------------------------------------ |
+| <img src="screenshots/28.png" width="300"> | <img src="screenshots/24.png" width="300"> |
+
 ## Motivation
 
 For a long time, society has been using the 7 day week format, and it's been great, but not for everyone.
