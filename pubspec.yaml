@@ -1,0 +1,29 @@
+name: TimeWatcher
+description: A 28 hr. day companion.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  moment: ^0.0.1
+  vibrate: 0.0.4
+  weather: ^0.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.7.0
+
+flutter_icons:
+  image_path: "assets/icon/icon.png"
+  android: true
+  ios: true
+
+flutter:
+  assets:
+  - assets/strings.json
+  uses-material-design: true
