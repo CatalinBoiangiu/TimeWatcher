@@ -30,9 +30,16 @@ Our app provides a clean and easy way to get information related to the sun cycl
 
 ## Compatibility
 
-This app was developed and tested for an Android platform (Android Pie)
+This app was developed and tested for an Android platform (Android Pie), but should be compatible with iOS.
 
 Hardware tested on: Google Pixel 2, Nokia 8
+
+__Size:__
+
+```
+Catalins-MacBook-Pro:lib catalinboiangiu$ find . -name "*.dart" | xargs cat | wc -c
+    5117
+```
 
 ## References
 
