@@ -2,26 +2,26 @@ PODS:
   - Flutter (1.0.0)
   - location (0.0.1):
     - Flutter
-  - vibration (1.0.2):
+  - vibrate (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
   - location (from `.symlinks/plugins/location/ios`)
-  - vibration (from `.symlinks/plugins/vibration/ios`)
+  - vibrate (from `.symlinks/plugins/vibrate/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: ".symlinks/flutter/ios"
   location:
     :path: ".symlinks/plugins/location/ios"
-  vibration:
-    :path: ".symlinks/plugins/vibration/ios"
+  vibrate:
+    :path: ".symlinks/plugins/vibrate/ios"
 
 SPEC CHECKSUMS:
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
   location: 26c90953ad5916331d0d1d913898779910416487
-  vibration: 1f64b38673d28697553ce3b2ed1e867b82145e8b
+  vibrate: 8d9cb77859e02b88730c44a9907f561ddca25ca1
 
 PODFILE CHECKSUM: c33347e97a48474e97b5e623397ba2f1d0429ce7
 
