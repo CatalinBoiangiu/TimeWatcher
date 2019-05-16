@@ -1,5 +1,5 @@
-import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
+import 'dart:async';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:vibrate/vibrate.dart';
 import 'package:moment/moment.dart';
@@ -23,6 +23,7 @@ class _AppState extends State<App> {
   var mode = false;
   var time = '';
   var day = 0;
+  var nDay = 0;
   var srT = 'refreshing...';
   var ssT = 'refreshing...';
   var tP = Colors.amber;
@@ -51,7 +52,7 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
     if (naW == 0)
-      getJson('assets/strings.json').then((result) {
+      getJson('assets/str.json').then((result) {
         setState(() {
           a = jsonDecode(result);
           naW = 2;
@@ -80,7 +81,8 @@ class _AppState extends State<App> {
     setState(() {
       tP = (mode) ? Colors.green : Colors.amber;
       time = (mode) ? coreM.format('HH:mm:ss') : sfHr + minSS;
-      day = (mode) ? wD : (((wD) * 24 + core.hour) / 28).floor();
+      nDay = (((wD) * 24 + core.hour) / 28).floor();
+      day = (mode) ? wD : nDay;
       if (w != null) {
         var sr = w.sunrise.difference(core);
         var ss = w.sunset.difference(core);
@@ -114,22 +116,25 @@ class _AppState extends State<App> {
           backgroundColor: tP.withOpacity(0.20), label: Text(i, style: h3)));
     wLw.removeAt(day);
     wLw.insert(
-        day, Chip(label: Text(wL[day], style: h3), backgroundColor: tPo));
+      day,
+      Chip(label: Text(wL[day], style: h3), backgroundColor: tPo),
+    );
     for (int i = 1; i <= 2; i++)
       scLw.add(ListTile(
-          leading: Icon((i == 1) ? isR : isS, color: tPo),
-          title:
-              Text((i == 1) ? 'Sunrise ' + srT : 'Sunset ' + ssT, style: h3)));
+        leading: Icon((i == 1) ? isR : isS, color: tPo),
+        title: Text((i == 1) ? 'Sunrise ' + srT : 'Sunset ' + ssT, style: h3),
+      ));
     aLw.add(Container(
         child: Text('Sleep schedule (24 hr. format)', style: h4), margin: e1));
     for (int ii = 0; ii < 2; ii++)
       for (int i = 1; i <= naW; i++)
         aLw.add(ListTileTheme(
-            iconColor: (ii == 0) ? tPo : tP.withOpacity(0.40),
-            child: ListTile(
-                leading: Icon((i == 1) ? Icons.local_hotel : Icons.local_cafe),
-                title:
-                    Text(a[((ii + day) % 6).toString() + '.$i'], style: h3))));
+          iconColor: (ii == 0) ? tPo : tP.withOpacity(0.40),
+          child: ListTile(
+            leading: Icon((i == 1) ? Icons.local_hotel : Icons.local_cafe),
+            title: Text(a[((ii + nDay + 1) % 6).toString() + '.$i'], style: h3),
+          ),
+        ));
     return GestureDetector(
       onTap: () {
         Vibrate.feedback(FeedbackType.medium);
@@ -147,18 +152,18 @@ class _AppState extends State<App> {
               child: SingleChildScrollView(
                   child: Column(children: <Widget>[
             Card(
-              margin: e1,
-              child: ListTile(
-                  leading: Chip(
-                      backgroundColor: tPo,
-                      label: Text((mode) ? '24' : '28', style: h1)),
-                  title: Text(time, style: h2)),
-            ),
-            Card(
                 margin: e1,
-                child: Row(mainAxisAlignment: mAaSe, children: wLw)),
+                child: ListTile(
+                    leading: Chip(
+                        backgroundColor: tPo,
+                        label: Text((mode) ? '24' : '28', style: h1)),
+                    title: Text(time, style: h2))),
+            Card(
+              margin: e1,
+              child: Row(mainAxisAlignment: mAaSe, children: wLw),
+            ),
             Card(margin: e1, child: Column(children: scLw)),
-            Card(margin: e2, child: Column(children: aLw)),
+            Card(margin: e2, child: Column(children: aLw))
           ]))),
         ),
       ),

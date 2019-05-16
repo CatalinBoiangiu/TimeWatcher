@@ -25,5 +25,5 @@ flutter_icons:
 
 flutter:
   assets:
-  - assets/strings.json
+  - assets/str.json
   uses-material-design: true
